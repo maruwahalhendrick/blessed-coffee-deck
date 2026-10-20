@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitch Deck: Revitalisasi Visibilitas Google Maps — Coffee House Blessed</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- GSAP for Smooth Fluid Transitions -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <style>
+        /* ==========================================================
+           CLEAN WHITE & EDITORIAL COFFEE THEME
+           Pristine White Canvas + Deep Slate Typography + Warm Coffee Accents
+           ========================================================== */
+        :root {
+            --bg-canvas: #FFFFFF;
+            --bg-surface: #F8FAFC;
+            --bg-surface-elevated: #FFFFFF;
+            --bg-card-hover: #F1F5F9;
+            
+            --border-light: #E2E8F0;
+            --border-accent: rgba(180, 83, 9, 0.25);
+            --border-focus: #B45309;
+            
+            --text-heading: #0F172A;
+            --text-body: #334155;
+            --text-muted: #64748B;
+            --text-faint: #94A3B8;
+            
+            /* Coffee & Amber Palette */
+            --coffee-dark: #78350F;
+            --coffee-primary: #B45309;
+            --amber-warm: #D97706;
+            --amber-soft: rgba(217, 119, 6, 0.1);
+            
+            /* Status Accents */
+            --alert-red: #DC2626;
+            --alert-red-soft: rgba(220, 38, 38, 0.08);
+            --alert-red-border: rgba(220, 38, 38, 0.25);
+            
+            --success-green: #059669;
+            --success-green-soft: rgba(5, 150, 105, 0.08);
+            --success-green-border: rgba(5, 150, 105, 0.25);
+            
+            --font-serif: 'DM Serif Display', Georgia, serif;
+            --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+            
+            --shadow-subtle: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+            --shadow-card: 0 10px 30px -4px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.04);
+            --shadow-elevated: 0 20px 40px -8px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #F1F5F9;
+            font-family: var(--font-sans);
+            color: var(--text-body);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 16:9 FIXED STAGE CONTAINER */
+        .stage-viewport {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            background: #E2E8F0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stage-canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1920px;
+            height: 1080px;
+            transform-origin: 0 0;
+            background: var(--bg-canvas);
+            overflow: hidden;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.15);
+        }
+
+        /* SLIDE CONTAINER */
+        .slide {
+            position: absolute;
+            inset: 0;
+            width: 1920px;
+            height: 1080px;
+            padding: 70px 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 95% 5%, rgba(217, 119, 6, 0.04) 0%, transparent 50%),
+                        radial-gradient(circle at 5% 95%, rgba(120, 53, 15, 0.03) 0%, transparent 40%),
+                        var(--bg-canvas);
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .slide.active {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 2;
+        }
+
+        /* HEADER & FOOTER RAILS */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 16px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--coffee-primary);
+        }
+
+        .slide-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-light);
+            padding-top: 16px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+        }
+
+        /* TYPOGRAPHY */
+        .kicker {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--coffee-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .kicker::before {
+            content: '';
+            width: 22px;
+            height: 2px;
+            background: var(--coffee-primary);
+            display: inline-block;
+        }
+
+        h1.title-hero {
+            font-family: var(--font-serif);
+            font-size: 78px;
+            line-height: 1.08;
+            letter-spacing: -0.015em;
+            color: var(--text-heading);
+            margin-bottom: 22px;
+        }
+
+        h2.title-slide {
+            font-family: var(--font-serif);
+            font-size: 56px;
+            line-height: 1.12;
+            letter-spacing: -0.01em;
+            color: var(--text-heading);
+            margin-bottom: 16px;
+        }
+
+        p.text-lead {
+            font-size: 22px;
+            line-height: 1.55;
+            color: var(--text-body);
+            max-width: 1250px;
+        }
+
+        /* CLEAN WHITE CARDS */
+        .card {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card:hover {
+            border-color: var(--border-accent);
+            box-shadow: var(--shadow-card);
+            transform: translateY(-2px);
+        }
+        .card.accent-amber {
+            border-color: rgba(217, 119, 6, 0.3);
+            background: var(--amber-soft);
+        }
+        .card.accent-red {
+            border-color: var(--alert-red-border);
+            background: var(--alert-red-soft);
+        }
+        .card.accent-green {
+            border-color: var(--success-green-border);
+            background: var(--success-green-soft);
+        }
+
+        /* STAT BLOCKS */
+        .stat-num {
+            font-family: var(--font-serif);
+            font-size: 60px;
+            line-height: 1;
+            color: var(--coffee-primary);
+            margin-bottom: 6px;
+        }
+        .stat-label {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 4px;
+        }
+        .stat-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* INTERACTIVE FULL-IMAGE CONTAINER */
+        .full-image-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 18px;
+            padding: 12px;
+            box-shadow: var(--shadow-card);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .full-image-card:hover {
+            border-color: var(--coffee-primary);
+            box-shadow: 0 16px 36px -6px rgba(180, 83, 9, 0.15);
+            transform: translateY(-3px);
+        }
+        .full-image-card img {
+            width: 100%;
+            height: auto;
+            max-height: 580px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: #F8FAFC;
+            display: block;
+        }
+        .zoom-overlay-hint {
+            position: absolute;
+            bottom: 22px;
+            right: 22px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #FFFFFF;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(6px);
+            opacity: 0.9;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .full-image-card:hover .zoom-overlay-hint {
+            opacity: 1;
+            transform: scale(1.05);
+            background: var(--coffee-primary);
+        }
+
+        /* PILLS & BADGES */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .badge-red {
+            background: var(--alert-red-soft);
+            border: 1px solid var(--alert-red-border);
+            color: var(--alert-red);
+        }
+        .badge-amber {
+            background: var(--amber-soft);
+            border: 1px solid var(--border-accent);
+            color: var(--coffee-primary);
+        }
+        .anim-in {
+            opacity: 1 !important;
+            transform: none;
+            transition: transform 0.25s ease-out;
+        }
+
+        .slide.active .anim-in {
+            animation: slideElemEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        @keyframes slideElemEnter {
+            from {
+                opacity: 0.85;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* FLOATING NAV CONTROLLER (CENTER BOTTOM) */
+        .nav-controls {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--border-light);
+            padding: 8px 24px;
+            border-radius: 50px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+        }
+        .nav-btn {
+            background: none;
+            border: none;
+            color: var(--text-heading);
+            font-family: var(--font-mono);
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover {
+            color: var(--coffee-primary);
+            background: var(--amber-soft);
+        }
+        .slide-counter {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            padding: 0 10px;
+        }
+
+        /* FULLSCREEN LIGHTBOX MODAL */
+        .lightbox-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100000;
+            background: rgba(15, 23, 42, 0.88);
+            backdrop-filter: blur(10px);
+            display: none;
+            opacity: 0;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.3s ease;
+            cursor: zoom-out;
+            padding: 40px;
+        }
+        .lightbox-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-content-box {
+            position: relative;
+            max-width: 92vw;
+            max-height: 88vh;
+            background: #FFFFFF;
+            padding: 16px;
+            border-radius: 20px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            cursor: default;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 76vh;
+            object-fit: contain;
+            border-radius: 12px;
+            display: block;
+        }
+        .lightbox-caption {
+            margin-top: 14px;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--coffee-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .lightbox-close-btn {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 44px;
+            height: 44px;
+            background: var(--coffee-primary);
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+            border-radius: 50%;
+            font-family: var(--font-mono);
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+        .lightbox-close-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* INTERACTIVE INTERACTIVE ELEMENTS */
+        .interactive-tab-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid var(--border-light);
+            background: #FFFFFF;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+        .interactive-tab-btn.active {
+            background: var(--coffee-primary);
+            color: #FFFFFF;
+            border-color: var(--coffee-primary);
+            box-shadow: 0 4px 12px rgba(180, 83, 9, 0.25);
+        }
+
+        .interactive-friction-card {
+            cursor: pointer;
+            border: 2px solid var(--border-light);
+            border-radius: 16px;
+            padding: 24px;
+            background: #FFFFFF;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .interactive-friction-card:hover {
+            border-color: var(--coffee-primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-card);
+        }
+        .interactive-friction-card.selected {
+            border-color: var(--alert-red);
+            background: var(--alert-red-soft);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stage-viewport">
+        <main class="stage-canvas" id="deckStage">
+
+            <!-- ========================================================
+                 SLIDE 1: COVER (CLEAN WHITE EDITORIAL)
+                 ======================================================== -->
+            <section class="slide active" id="slide-1">
+                <header class="slide-header">
+                    <span>NEURALKATS STRATEGIC AUDIT // 2026</span>
+                    <span>COFFEE HOUSE BLESSED &bull; KOYA BARAT, JAYAPURA</span>
+                </header>
+
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 1450px;">
+                    <div class="kicker anim-in">AUDIT VISIBILITAS GOOGLE MAPS & STRATEGI PERTUMBUHAN LOKAL</div>
+                    <h1 class="title-hero anim-in">
+                        Mengapa Coffee House Blessed Kehilangan <span style="color: var(--coffee-primary); font-style: italic;">Puluhan Pelanggan</span> Tiap Minggu?
+                    </h1>
+                    <p class="text-lead anim-in" style="font-size: 25px; line-height: 1.55; margin-bottom: 40px; color: var(--text-body);">
+                        Sebuah bedah data lapangan mengenai mengapa calon penikmat kopi di radius 1–2 KM tidak dapat menemukan kafe Anda di Google Maps, serta tawaran solusi perbaikan tuntas <strong style="color: var(--coffee-dark); background: var(--amber-soft); padding: 2px 10px; border-radius: 6px;">100% Gratis & Tanpa Risiko</strong>.
+                    </p>
+
+                    <div class="anim-in" style="display: flex; align-items: center; gap: 28px;">
+                        <div class="card" style="padding: 16px 28px; display: inline-flex; align-items: center; gap: 18px; border-color: var(--border-accent); background: #FFFFFF;">
+                            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--coffee-primary); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 19px; font-family: var(--font-display);">AH</div>
+                            <div>
+                                <div style="font-weight: 700; font-size: 17px; color: var(--text-heading);">Abel Hendrik</div>
+                                <div style="font-size: 13px; color: var(--text-muted); font-family: var(--font-mono);">Founder & Digital Strategist &bull; NeuralKats</div>
+                            </div>
+                        </div>
+
+                        <div class="badge badge-amber" style="padding: 12px 22px; font-size: 13px;">
+                            📍 KOYA BARAT &bull; KOTA JAYAPURA &bull; PAPUA
+                        </div>
+
+                        <span style="font-size: 14px; color: var(--text-muted); font-family: var(--font-mono);">
+                            Gunakan tombol panah [ → ] atau Spasi untuk lanjut
+                        </span>
+                    </div>
+                </div>
+
+                <footer class="slide-footer">
+                    <span>COFFEE HOUSE BLESSED DIGITAL DOSSIER</span>
+                    <span>NEURALKATS STRATEGY &bull; START SMALL. BUILD SMART.</span>
+                </footer>
+            </section>
+
+
+            <!-- ========================================================
+                 SLIDE 2: THE REALITY (JARAK VS VISIBILITAS) - FULL IMAGE
+                 ======================================================== -->
+            <section class="slide" id="slide-2">
+                <header class="slide-header">
+                    <span>01 // PARADOKS JARAK & VISIBILITAS</span>
+                    <span>SLIDE 02 / 09</span>
+                </header>
+
+                <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                    <div>
+                        <div class="kicker anim-in">BUKTI RUTE & RADIUS KONSUMEN</div>
+                        <h2 class="title-slide anim-in">Hanya 4-5 Menit Perjalanan,<br>Namun <span style="color: var(--alert-red);">Gaib di Layar HP</span>.</h2>
+                        
+                        <p class="text-lead anim-in" style="font-size: 19px; margin-bottom: 24px;">
+                            Lokasi kafe berada di posisi strategis Koya Barat (lintasan perumahan, kampus, dan akses wisata Holtekamp). Jarak riil dari pusat aktivitas terdekat hanya <strong>1.5 – 1.8 KM (4-5 menit berkendara)</strong>.
+                        </p>
+
+                        <div class="card accent-red anim-in" style="margin-bottom: 24px;">
+                            <div style="display: flex; gap: 14px; align-items: flex-start;">
+                                <div style="font-size: 26px; line-height: 1;">⚠️</div>
+                                <div>
+                                    <div style="font-weight: 700; font-size: 17px; color: var(--alert-red); margin-bottom: 4px;">Perilaku Konsumen Kopi Saat Ini</div>
+                                    <div style="font-size: 14px; color: var(--text-body); line-height: 1.5;">
+                                        Konsumen tidak lagi keliling jalan mencari kafe. Mereka membuka Google Maps, mengetik <em>"kafe terdekat"</em>, lalu memilih dari rekomendasi teratas. Jika kafe Anda tidak muncul, di mata mereka kafe tersebut <strong>dianggap tidak beroperasi</strong>.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Validation -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;" class="anim-in">
+                            <div class="card">
+                                <div class="stat-num">76%</div>
+                                <div class="stat-label">Datang dalam 24 Jam</div>
+                                <div class="stat-desc">Data Google: 76% pencari tempat makan/kafe di ponsel akan datang ke lokasi fisik dalam 24 jam.</div>
+                            </div>
+                            <div class="card">
+                                <div class="stat-num">28%</div>
+                                <div class="stat-label">Langsung Membeli</div>
+                                <div class="stat-desc">Hampir sepertiga pencarian lokal menghasilkan transaksi pembelian riil pada hari yang sama.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Full Image Card with Zoom -->
+                    <div class="anim-in">
+                        <div class="full-image-card" onclick="openLightbox('assets/route_proximity.jpg', 'Rute Google Maps: Hanya 4-5 Menit (1.8 KM) dari Pusat Aktivitas Koya Barat')">
+                            <img src="assets/route_proximity.jpg" alt="Rute Google Maps ke Coffee House Blessed">
+                            <div class="zoom-overlay-hint">
+                                <span>🔍 Klik untuk Perbesar Penuh</span>
+                            </div>
+                        </div>
+                        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 10px;">
+                            Tangkapan layar nyata: Waktu tempuh 4-5 menit dari perumahan REGGAE HOME 5B ke kafe.
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="slide-footer">
+                    <span>SUMBER DATA: GOOGLE CONSUMER INSIGHTS & LOCAL SEARCH BENCHMARK</span>
+                    <span>NEURALKATS AUDIT</span>
+                </footer>
+            </section>
+
+
+            <!-- ========================================================
+                 SLIDE 3: PETA PERSAINGAN (OUT OF TOP 10) - FULL IMAGES
+                 ======================================================== -->
+            <section class="slide" id="slide-3">
+                <header class="slide-header">
+                    <span>02 // PETA PERSAINGAN LOKAL KOYA BARAT</span>
+                    <span>SLIDE 03 / 09</span>
+                </header>
+
+                <div style="flex: 1; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 50px; align-items: center;">
+                    <!-- Left: Both Full Images Side-by-Side -->
+                    <div class="anim-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+                        <div class="full-image-card" onclick="openLightbox('assets/competitor_map.jpg', 'Peta Sebaran Kafe di Koya Barat: Kepadatan Kompetitor Cukup Tinggi')">
+                            <img src="assets/competitor_map.jpg" alt="Peta Kafe Sekitar Koya Barat" style="max-height: 540px;">
+                            <div class="zoom-overlay-hint">
+                                <span>🔍 Peta Sebaran</span>
+                            </div>
+                        </div>
+
+                        <div class="full-image-card" onclick="openLightbox('assets/competitor_list.jpg', 'Daftar Hasil Pencarian: Penuh oleh Kompetitor dengan Puluhan-Ratusan Ulasan')">
+                            <img src="assets/competitor_list.jpg" alt="Daftar Kompetitor Google Maps" style="max-height: 540px;">
+                            <div class="zoom-overlay-hint">
+                                <span>🔍 Daftar Top Ranking</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: The Problem Breakdown -->
+                    <div>
+                        <div class="kicker anim-in">PERSAINGAN MAKIN AGRESIF</div>
+                        <h2 class="title-slide anim-in">Kompetitor Menguasai Layar.<br>Blessed <span style="color: var(--alert-red);">Tersingkir dari Top 10</span>.</h2>
+                        
+                        <p class="text-lead anim-in" style="font-size: 18px; margin-bottom: 22px;">
+                            Saat calon pelanggan mencari <em>"kafe di Koya Barat"</em>, layar mereka dipenuhi kafe lain seperti <strong>Katita (4.7★)</strong>, <strong>Sora (4.4★)</strong>, dan <strong>SIGMA Coffee (4.9★, 125 ulasan)</strong>.
+                        </p>
+
+                        <div class="card accent-amber anim-in" style="margin-bottom: 20px;">
+                            <div style="font-weight: 700; font-size: 17px; color: var(--coffee-dark); margin-bottom: 6px;">
+                                Riset Algoritma "Google Local 3-Pack"
+                            </div>
+                            <div style="font-size: 14px; color: var(--text-body); line-height: 1.55;">
+                                Data dari <em>Search Engine Journal</em>: <strong>70% s/d 80% dari total klik dan rute jalan</strong> hanya dinikmati oleh 3 bisnis teratas. Bisnis yang berada di bawah peringkat 10 kehilangan <strong>lebih dari 90% peluang</strong> untuk dipilih pelanggan baru.
+                            </div>
+                        </div>
+
+                        <div class="card accent-red anim-in">
+                            <div style="font-weight: 700; font-size: 16px; color: var(--alert-red); margin-bottom: 4px;">
+                                Dampak Nyata bagi Coffee House Blessed
+                            </div>
+                            <div style="font-size: 14px; color: var(--text-body); line-height: 1.5;">
+                                Setiap hari ada orang yang ingin ngopi di dekat Anda, namun uang mereka masuk ke kasir kompetitor hanya karena kompetitor lebih terlihat di layar HP mereka.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="slide-footer">
+                    <span>KLIK GAMBAR UNTUK MEMPERBESAR DAN MELIHAT DETAIL LOKASI MAPS</span>
+                    <span>NEURALKATS AUDIT</span>
+                </footer>
+            </section>
+
+
+            <!-- ========================================================
+                 SLIDE 4: PROBLEM 1 (HANYA 3 ULASAN & 4 TAHUN VAKUM)
+                 ======================================================== -->
+            <section class="slide" id="slide-4">
+                <header class="slide-header">
+                    <span>03 // MASALAH KRUSIAL #1: ULASAN & AKTIVITAS</span>
+                    <span>SLIDE 04 / 09</span>
+                </header>
+
+                <div style="flex: 1; display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 50px; align-items: center;">
+                    <!-- Left: Full Profile Image -->
+                    <div class="anim-in">
+                        <div class="full-image-card" onclick="openLightbox('assets/current_profile.jpg', 'Tampilan Profil Google Maps Coffee House Blessed: Rating 4.3 dengan 3 Ulasan')">
+                            <img src="assets/current_profile.jpg" alt="Profil Google Maps Coffee House Blessed" style="max-height: 530px;">
+                            <div class="zoom-overlay-hint">
+                                <span>🔍 Perbesar Profil</span>
+                            </div>
+                        </div>
+                        <div class="card accent-red" style="margin-top: 14px; padding: 14px 20px; display: flex; align-items: center; gap: 14px;">
+                            <span style="font-size: 24px;">🚨</span>
+                            <div>
+                                <div style="font-weight: 700; font-size: 14px; color: var(--alert-red);">FAKTA AUDIT: CUMA 3 ULASAN</div>
+                                <div style="font-size: 13px; color: var(--text-body);">Tidak pernah bertambah satu pun ulasan selama 4 tahun terakhir!</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Algorithmic & Psychological Crash -->
+                    <div>
+                        <div class="kicker anim-in">KRISIS KEPERCAYAAN & OTORITAS</div>
+                        <h2 class="title-slide anim-in">3 Ulasan Saja.<br><span style="color: var(--alert-red);">Vakum Selama 4 Tahun.</span></h2>
+                        
+                        <p class="text-lead anim-in" style="font-size: 18px; margin-bottom: 24px;">
+                            Rating 4.3 bintang dari 3 ulasan terdengar lumayan di awal, tapi tanggal ulasan yang sudah bertahun-tahun lalu memicu 2 dampak fatal:
+                        </p>
+
+                        <div style="display: flex; flex-direction: column; gap: 18px;" class="anim-in">
+                            <div class="card" style="border-left: 4px solid var(--alert-red);">
+                                <div style="font-size: 17px; font-weight: 700; color: var(--alert-red); margin-bottom: 4px;">
+                                    1. Dianggap "Mati" oleh Algoritma Google
+                                </div>
+                                <div style="font-size: 14px; color: var(--text-body); line-height: 1.55;">
+                                    Google memprioritaskan keamanan pengguna. Profil tanpa interaksi dan ulasan baru bertahun-tahun diindikasi sudah tutup atau tidak aktif, sehingga sengaja disingkirkan dari rekomendasi pencarian.
+                                </div>
+                            </div>
+
+                            <div class="card" style="border-left: 4px solid var(--coffee-primary);">
+                                <div style="font-size: 17px; font-weight: 700; color: var(--coffee-dark); margin-bottom: 4px;">
+                                    2. Keraguan Psikologis Konsumen (Social Proof Hilang)
+                                </div>
+                                <div style="font-size: 14px; color: var(--text-body); line-height: 1.55;">
+                                    Riset <em>BrightLocal Consumer Review</em>: <strong>84% konsumen tidak mempercayai ulasan yang berumur lebih dari 3 bulan</strong>. Calon pelanggan ragu: <em>"Ini kafe masih buka gak ya? Jangan-jangan udah tutup."</em> Mereka akhirnya beralih ke kafe yang aktif.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="slide-footer">
+                    <span>KLIK FOTO UNTUK MELIHAT BUKTI SCREENSHOT PROFIL GOOGLE MAPS</span>
+                    <span>NEURALKATS AUDIT</span>
+                </footer>
+            </section>
+
+
+            <!-- ========================================================
+                 SLIDE 5: PROBLEM 2 (PROFIL BELUM LAYAK - INTERACTIVE MATRIX)
+                 ======================================================== -->
+            <section class="slide" id="slide-5">
+                <header class="slide-header">
+                    <span>04 // MASALAH KRUSIAL #2: KELENGKAPAN INFORMASI</span>
+                    <span>SLIDE 05 / 09</span>
+                </header>
+
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <div class="kicker anim-in">GAP INFORMASI FATAL</div>
+                    <h2 class="title-slide anim-in">Profil Belum Layak: <span style="color: var(--alert-red);">Friction</span> yang Mengusir Pelanggan.</h2>
+                    <p class="text-lead anim-in" style="font-size: 19px; margin-bottom: 30px;">
+                        Sebelum seseorang memutuskan melangkahkan kaki ke kafe baru, mereka butuh kepastian. Klik kartu di bawah untuk melihat detail masalah:
+                    </p>
+
+                    <!-- Interactive 4-Grid Cards -->
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;" class="anim-in" id="frictionCardsContainer">
+                        
+                        <div class="interactive-friction-card selected" onclick="selectFriction(0, this)">
+                            <div style="font-size: 30px; margin-bottom: 10px;">📋</div>
+                            <div style="font-weight: 700; font-size: 17px; color: var(--text-heading); margin-bottom: 6px;">Tanpa Daftar Menu & Harga</div>
+                            <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Tidak ada foto menu jelas maupun daftar harga pasti.</div>
+                        </div>
+
+                        <div class="interactive-friction-card" onclick="selectFriction(1, this)">
+                            <div style="font-size: 30px; margin-bottom: 10px;">🖼️</div>
+                            <div style="font-weight: 700; font-size: 17px; color: var(--text-heading); margin-bottom: 6px;">Foto Suasana Minim</div>
+                            <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Hanya 4 foto generik mesin & biji kopi.</div>
+                        </div>
+
+                        <div class="interactive-friction-card" onclick="selectFriction(2, this)">
+                            <div style="font-size: 30px; margin-bottom: 10px;">👥</div>
+                            <div style="font-weight: 700; font-size: 17px; color: var(--text-heading); margin-bottom: 6px;">Nol Bukti Sosial (Crowd)</div>
+                            <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Tidak ada dokumentasi saat kafe dikunjungi tamu.</div>
+                        </div>
+
+                        <div class="interactive-friction-card" onclick="selectFriction(3, this)">
+                            <div style="font-size: 30px; margin-bottom: 10px;">🕒</div>
+                            <div style="font-weight: 700; font-size: 17px; color: var(--text-heading); margin-bottom: 6px;">Jam Buka & Kontak Hilang</div>
+                            <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Tidak ada jam operasional pasti & nomor telepon.</div>
+                        </div>
+
+                    </div>
+
+                    <!-- Dynamic Diagnostic Details Box -->
+                    <div class="card accent-amber anim-in" id="frictionDetailBox" style="margin-top: 24px; padding: 24px 30px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div id="frictionTitle" style="font-weight: 700; font-size: 18px; color: var(--coffee-dark); margin-bottom: 4px;">
+                                Dampak: Tanpa Daftar Menu & Harga Pasti
+                            </div>
+                            <div id="frictionDesc" style="font-size: 15px; color: var(--text-body); line-height: 1.55;">
+                                Orang Indonesia sangat sensitif terhadap harga. Tanpa kepastian menu dan harga, mereka takut kemahalan atau tidak menemukan minuman yang disukai. Akibatnya, mereka memilih kafe lain yang menunya jelas.
+                            </div>
+                        </div>
+                        <div class="badge badge-amber" style="padding: 10px 18px; white-space: nowrap; font-size: 13px;">
+                            HIGH FRICTION FACTOR
+                        </div>
+                    </div>
+
+                    <!-- Stat Quote -->
+                    <div style="margin-top: 20px; font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 10px;" class="anim-in">
+                        <span>📈</span>
+                        <span><strong>Data Google Business:</strong> Profil dengan foto lengkap & update jam operasional mendapatkan <strong>+42% permintaan rute petunjuk arah</strong> dan <strong>+35% klik kontak telepon</strong>.</span>
+                    </div>
+                </div>
+
+                <footer class="slide-footer">
+                    <span>KLIK SETIAP KARTU DI ATAS UNTUK MELIHAT DIAGNOSTIK DAMPAK PADA KONSUMEN</span>
+                    <span>NEURALKATS STRATEGY</span>
+                </footer>
+            </section>
+
+
+            <!-- ========================================================
+                 SLIDE 6: NILAI TAMBAH (WEBSITE RESMI PENGUAT BRAND)
+                 ======================================================== -->
+            <section class="slide" id="slide-6">
+                <header class="slide-header">
+                    <span>05 // NILAI TAMBAH: INFRASTRUKTUR WEBSITE</span>
+                    <span>SLIDE 06 / 09</span>
+                </header>
+
+                <div style="flex: 1; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 50px; align-items: center;">
+                    <div>
+                        <div class="kicker anim-in">BEYOND GOOGLE MAPS</div>
+                        <h2 class="title-slide anim-in">Website: Mengubah Kafe Biasa Jadi <span style="color: var(--coffee-primary);">Brand Kredibel</span>.</h2>
+                        
+                        <p class="text-lead anim-in" style="font-size: 18px; margin-bottom: 26px;">
+                            Website bukan sekadar brosur digital. Bagi bisnis kuliner modern, website adalah infrastruktur penunjang yang membuka pintu ke peluang-peluang besar:
+                        </p>
+
+                        <div style="display: flex; flex-direction: column; gap: 16px;" class="anim-in">
+                            <div class="card">
+                                <div style="font-weight: 700; font-size: 17px; color: var(--coffee-dark); margin-bottom: 4px;">
+                                    1. Akses Menu & Signature Beans 24 Jam
+                                </div>
+                                <div style="font-size: 14px; color: var(--text-muted); line-height: 1.55;">
+                                    Pelanggan dapat melihat katalog lengkap minuman, makanan, racikan signature, dan ketersediaan fasilitas (WiFi, colokan listrik) langsung dari satu link praktis.
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div style="font-weight: 700; font-size: 17px; color: var(--coffee-dark); margin-bottom: 4px;">
+                                    2. Magnet Dukungan Kampus, Komunitas & Nirlaba
+                                </div>
+                                <div style="font-size: 14px; color: var(--text-muted); line-height: 1.55;">
+                                    Organisasi kampus, komunitas lokal, atau NGO sering mencari venue untuk gathering. Profil web yang rapi memudahkan mereka menilai kelayakan venue sebelum mengajukan kerjasama.
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div style="font-weight: 700; font-size: 17px; color: var(--coffee-dark); margin-bottom: 4px;">
+                                    3. Kredibilitas di Mata Mitra & Supplier
+                                </div>
+                                <div style="font-size: 14px; color: var(--text-muted); line-height: 1.55;">
+                                    Supplier biji kopi, susu, atau calon mitra bisnis menilai keseriusan manajemen kafe dari infrastruktur digital yang dimiliki.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Interactive Website Mockup Feature Card -->
+                    <div class="anim-in">
+                        <div class="card accent-amber" style="padding: 40px; text-align: center; border-width: 2px;">
+                            <div style="font-size: 52px; margin-bottom: 14px;">🌐</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 32px; color: var(--text-heading); margin-bottom: 12px;">Mini-Website Resmi</h3>
+                            <p style="font-size: 15px; color: var(--text-body); line-height: 1.6; margin-bottom: 24px;">
+                                Halaman web satu pintu yang cepat, ringan diakses di jaringan Papua, dan terhubung langsung ke tombol WhatsApp kasir serta rute Google Maps.
+                            </p>
+
+                            <div style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
+                                <div class="badge badge-amber" style="justify-content: center; padding: 12px; font-size: 13px;">✓ DOMAIN & HOSTING TERKELOLA</div>
+                                <div class="badge badge-amber" style="justify-content: center; padding: 12px; font-size: 13px;">✓ KATALOG MENU & FOTO HD</div>
+                                <div class="badge badge-amber" style="justify-content: center; padding: 12px; font-size: 13px;">✓ ONE-CLICK WHATSAPP RESERVASI</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="slide-footer">
+                    <span>DIGITAL INFRASTRUCTURE FOR MSME BRANDING</span>
+                    <span>NEURALKATS STRATEGY</span>
+                </footer>
+            </section>
+
+
+            <!-- ========================================================
+                 SLIDE 7: BLUEPRINT SOLUSI NEURALKATS (ROADMAP TUNTAS)
+                 ======================================================== -->
+            <section class="slide" id="slide-7">
+                <header class="slide-header">
+                    <span>06 // BLUEPRINT EKSEKUSI NEURALKATS</span>
+                    <span>SLIDE 07 / 09</span>
+                </header>
+
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <div class="kicker anim-in">ROADMAP PERBAIKAN TUNTAS</div>
+                    <h2 class="title-slide anim-in">Rencana Aksi: Dari Tidak Terlihat Menjadi <span style="color: var(--coffee-primary);">Pilihan Utama</span>.</h2>
+                    <p class="text-lead anim-in" style="font-size: 19px; margin-bottom: 32px;">
+                        Kami tidak sekadar memberi saran, tapi mengeksekusi seluruh perbaikan dari hulu ke hilir:
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;" class="anim-in">
+                        <div class="card" style="border-top: 5px solid var(--coffee-primary);">
+                            <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--coffee-primary); margin-bottom: 10px;">TAHAP 01</div>
+                            <div style="font-weight: 700; font-size: 18px; color: var(--text-heading); margin-bottom: 8px;">Setup & Verifikasi Profil</div>
+                            <div style="font-size: 14px; color: var(--text-muted); line-height: 1.55;">
+                                Lengkapi jam operasional resmi, kontak WhatsApp aktif, kategori spesifik, deskripsi cerita kafe, dan atribut fasilitas.
+                            </div>
+                        </div>
+
+                        <div class="card" style="border-top: 5px solid var(--coffee-primary);">
+                            <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--coffee-primary); margin-bottom: 10px;">TAHAP 02</div>
+                            <div style="font-weight: 700; font-size: 18px; color: var(--text-heading); margin-bottom: 8px;">Visual Storytelling</div>
+                            <div style="font-size: 14px; color: var(--text-muted); line-height: 1.55;">
+                                Pemotretan aset foto menu lengkap dengan harga pasti, foto suasana tempat duduk, barista beraksi, dan suasana saat ada tamu.
+                            </div>
+                        </div>
+
+                        <div class="card" style="border-top: 5px solid var(--coffee-primary);">
+                            <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--coffee-primary); margin-bottom: 10px;">TAHAP 03</div>
+                            <div style="font-weight: 700; font-size: 18px; color: var(--text-heading); margin-bottom: 8px;">Aktivasi Ulasan Organik</div>
+                            <div style="font-size: 14px; color: var(--text-muted); line-height: 1.55;">
+                                Sistem ajakan ulasan mudah di kasir (QR Code meja) agar pelanggan puas terbiasa meninggalkan rating bintang 5 secara rutin.
+                            </div>
+                        </div>
+
+                        <div class="card" style="border-top: 5px solid var(--coffee-primary);">
+                            <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--coffee-primary); margin-bottom: 10px;">TAHAP 04</div>
+                            <div style="font-weight: 700; font-size: 18px; color: var(--text-heading); margin-bottom: 8px;">Landing Page Resmi</div>
+                            <div style="font-size: 14px; color: var(--text-muted); line-height: 1.55;">
+                                Peluncuran mini-website profil kafe untuk memperkuat kredibilitas merek dan memudahkan kemitraan komunitas/kampus.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card accent-green anim-in" style="margin-top: 28px; text-align: center; padding: 18px 24px;">
+                        <span style="font-size: 16px; color: var(--success-green); font-weight: 700;">
+                            🎯 TARGET UTAMA: Menembus Rekomendasi Top 5 Kafe di Koya Barat dan Memulihkan Aliran Pelanggan Baru!
+                        </span>
+                    </div>
+                </div>
+
+                <footer class="slide-footer">
+                    <span>STRATEGIC IMPLEMENTATION ROADMAP</span>
+                    <span>NEURALKATS STRATEGY</span>
+                </footer>
+            </section>
+
+
+            <!-- ========================================================
+                 SLIDE 8: SKEMA KERJASAMA (GRATIS & 0 RISIKO)
+                 ======================================================== -->
+            <section class="slide" id="slide-8">
+                <header class="slide-header">
+                    <span>07 // PENAWARAN KHUSUS & SKEMA KERJASAMA</span>
+                    <span>SLIDE 08 / 09</span>
+                </header>
+
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <div class="kicker anim-in">KOLABORASI WIN-WIN MURNI</div>
+                    <h2 class="title-slide anim-in">Kerjasama Ini <span style="color: var(--success-green);">100% Gratis</span> & Tanpa Risiko.</h2>
+                    <p class="text-lead anim-in" style="font-size: 19px; margin-bottom: 32px;">
+                        Pasti timbul pertanyaan wajar: <em>"Kenapa gratis? Apa untungnya untuk Anda?"</em> Berikut transparansi penuh komitmen kami:
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px;" class="anim-in">
+                        <!-- What Cafe Gets -->
+                        <div class="card accent-green" style="padding: 34px;">
+                            <div class="badge badge-green" style="margin-bottom: 14px;">KEUNTUNGAN COFFEE HOUSE BLESSED</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 30px; margin-bottom: 16px; color: var(--text-heading);">Solusi Tuntas Tanpa Biaya</h3>
+                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; font-size: 15px; color: var(--text-body);">
+                                <li style="display: flex; gap: 10px;"><span>✓</span> <strong>Rp 0 Biaya Setup:</strong> Seluruh perbaikan data, foto aset, dan profil ditangani langsung.</li>
+                                <li style="display: flex; gap: 10px;"><span>✓</span> <strong>Infrastruktur Siap Pakai:</strong> Mendapatkan profil Google Maps profesional dan mini-website.</li>
+                                <li style="display: flex; gap: 10px;"><span>✓</span> <strong>Tanpa Janji Palsu:</strong> Kami tidak menjanjikan omset meledak mendadak, tapi memastikan kafe Anda tidak lagi dilewati orang.</li>
+                                <li style="display: flex; gap: 10px;"><span>✓</span> <strong>Nol Risiko Finansial:</strong> Pemilik kafe hanya perlu fokus menyajikan kopi terbaik.</li>
+                            </ul>
+                        </div>
+
+                        <!-- What NeuralKats Gets -->
+                        <div class="card accent-amber" style="padding: 34px;">
+                            <div class="badge badge-amber" style="margin-bottom: 14px;">KEUNTUNGAN BAGI SAYA (ABEL HENDRIK)</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 30px; margin-bottom: 16px; color: var(--text-heading);">Studi Kasus & Portofolio Emas</h3>
+                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; font-size: 15px; color: var(--text-body);">
+                                <li style="display: flex; gap: 10px;"><span>★</span> <strong>Real Case Study:</strong> Saya mendapatkan cerita nyata dan data pertumbuhan sebelum-sesudah perbaikan.</li>
+                                <li style="display: flex; gap: 10px;"><span>★</span> <strong>Bahan Marketing Utama:</strong> Hasil transformasi ini akan menjadi bukti portofolio paling berharga untuk agensi saya (NeuralKats) ke klien besar di masa depan.</li>
+                                <li style="display: flex; gap: 10px;"><span>★</span> <strong>Dukungan UMKM Lokal:</strong> Kepuasan pribadi melihat bisnis lokal di tanah Papua berkembang dan bersaing sehat.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 26px;" class="anim-in">
+                        <p style="font-size: 15px; color: var(--text-muted); font-style: italic;">
+                            "Satu-satunya kerugian adalah jika kita membiarkan kondisi ini berlanjut dan membiarkan puluhan calon pembeli setiap minggu masuk ke kafe kompetitor."
+                        </p>
+                    </div>
+                </div>
+
+                <footer class="slide-footer">
+                    <span>ZERO-RISK PARTNERSHIP MODEL</span>
+                    <span>NEURALKATS STRATEGY</span>
+                </footer>
+            </section>
+
+
+            <!-- ========================================================
+                 SLIDE 9: CALL TO ACTION / NEXT STEP
+                 ======================================================== -->
+            <section class="slide" id="slide-9">
+                <header class="slide-header">
+                    <span>08 // LANGKAH SELANJUTNYA</span>
+                    <span>SLIDE 09 / 09</span>
+                </header>
+
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <div class="kicker anim-in" style="justify-content: center;">MULAI DENGAN LANGKAH KECIL</div>
+                    <h1 class="title-hero anim-in" style="font-size: 72px; margin-bottom: 18px;">
+                        Mari Ngobrol Santai 15 Menit<br>di <span style="color: var(--coffee-primary);">Coffee House Blessed</span>.
+                    </h1>
+                    
+                    <p class="text-lead anim-in" style="font-size: 21px; max-width: 900px; margin-bottom: 36px;">
+                        Tidak perlu persiapan rumit. Cukup luangkan waktu sejenak untuk kita menyelaraskan menu, mengambil foto aset perdana, dan langsung mulai membenahi profil Maps kafe Anda.
+                    </p>
+
+                    <div class="card accent-amber anim-in" style="padding: 34px 50px; max-width: 680px; width: 100%; text-align: center; border-width: 2px; margin-bottom: 26px;">
+                        <div style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.15em; color: var(--coffee-primary); text-transform: uppercase; margin-bottom: 6px;">HUBUNGI SAYA LANGSUNG:</div>
+                        <div style="font-family: var(--font-serif); font-size: 44px; color: var(--text-heading); margin-bottom: 10px;">Abel Hendrik</div>
+                        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--coffee-primary); font-weight: 700; margin-bottom: 10px;">WA: 0896-7347-4961</div>
+                        <div style="font-size: 14px; color: var(--text-muted);">Founder & Digital Strategist &bull; NeuralKats Agency</div>
+                    </div>
+
+                    <div class="badge badge-amber anim-in" style="font-size: 13px; padding: 10px 24px;">
+                        "Start Small. Build Smart. Bikin Bisnis Lokal Makin Ramai & Dipercaya."
+                    </div>
+                </div>
+
+                <footer class="slide-footer">
+                    <span>NEURALKATS AGENCY &bull; PROPOSAL KERJASAMA KOYA BARAT</span>
+                    <span>COFFEE HOUSE BLESSED REVITALIZATION 2026</span>
+                </footer>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- FLOATING NAV CONTROLLER (CENTER BOTTOM) -->
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" title="Slide Sebelumnya (&larr;)">PREV</button>
+        <span class="slide-counter" id="counterDisplay">01 / 09</span>
+        <button class="nav-btn" id="nextBtn" title="Slide Selanjutnya (&rarr;)">NEXT</button>
+    </div>
+
+    <!-- FULLSCREEN LIGHTBOX MODAL -->
+    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox(event)">
+        <div class="lightbox-content-box" onclick="event.stopPropagation()">
+            <button class="lightbox-close-btn" onclick="closeLightbox(event)" title="Tutup (ESC)">✕</button>
+            <img src="" alt="Perbesar Gambar" class="lightbox-img" id="lightboxImg">
+            <div class="lightbox-caption" id="lightboxCaption">
+                <span>📍</span>
+                <span id="lightboxCaptionText">Caption</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRESENTATION & INTERACTIVE CONTROLLER SCRIPT -->
+    <script>
+        // === FIXED 16:9 SCALING ENGINE ===
+        class DeckPresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.stage = document.getElementById('deckStage');
+                this.counter = document.getElementById('counterDisplay');
+
+                // Read initial hash (e.g. #3)
+                const hashIndex = parseInt(window.location.hash.replace('#', '')) - 1;
+                this.currentSlide = (!isNaN(hashIndex) && hashIndex >= 0 && hashIndex < this.slides.length) ? hashIndex : 0;
+
+                this.scaleStage();
+                this.bindEvents();
+                this.showSlide(this.currentSlide);
+
+                window.addEventListener('resize', () => this.scaleStage());
+                window.addEventListener('hashchange', () => {
+                    const newHash = parseInt(window.location.hash.replace('#', '')) - 1;
+                    if (!isNaN(newHash) && newHash !== this.currentSlide) {
+                        this.showSlide(newHash);
+                    }
+                });
+            }
+
+            scaleStage() {
+                const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+                const x = (window.innerWidth - 1920 * scale) / 2;
+                const y = (window.innerHeight - 1080 * scale) / 2;
+                this.stage.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+            }
+
+            bindEvents() {
+                document.addEventListener('keydown', (e) => {
+                    // Don't change slide if lightbox is open
+                    const modal = document.getElementById('lightboxModal');
+                    if (modal && modal.classList.contains('active')) {
+                        if (e.key === 'Escape') closeLightbox();
+                        return;
+                    }
+
+                    if (['ArrowRight', 'ArrowDown', ' ', 'PageDown'].includes(e.key)) {
+                        e.preventDefault();
+                        this.next();
+                    } else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) {
+                        e.preventDefault();
+                        this.prev();
+                    } else if (e.key === 'Home') {
+                        e.preventDefault();
+                        this.showSlide(0);
+                    } else if (e.key === 'End') {
+                        e.preventDefault();
+                        this.showSlide(this.slides.length - 1);
+                    }
+                });
+
+                document.getElementById('nextBtn').addEventListener('click', () => this.next());
+                document.getElementById('prevBtn').addEventListener('click', () => this.prev());
+
+                // Touch swipe
+                let touchStartX = 0;
+                document.addEventListener('touchstart', (e) => {
+                    touchStartX = e.touches[0].clientX;
+                }, { passive: true });
+
+                document.addEventListener('touchend', (e) => {
+                    const diff = touchStartX - e.changedTouches[0].clientX;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) this.next();
+                        else this.prev();
+                    }
+                }, { passive: true });
+            }
+
+            next() {
+                if (this.currentSlide < this.slides.length - 1) {
+                    this.showSlide(this.currentSlide + 1);
+                }
+            }
+
+            prev() {
+                if (this.currentSlide > 0) {
+                    this.showSlide(this.currentSlide - 1);
+                }
+            }
+
+            showSlide(index) {
+                this.currentSlide = Math.max(0, Math.min(index, this.slides.length - 1));
+
+                this.slides.forEach((slide, idx) => {
+                    const isActive = idx === this.currentSlide;
+                    slide.classList.toggle('active', isActive);
+
+                    if (isActive) {
+                        this.animateElements(slide);
+                    }
+                });
+
+                const cur = String(this.currentSlide + 1).padStart(2, '0');
+                const tot = String(this.slides.length).padStart(2, '0');
+                this.counter.textContent = `${cur} / ${tot}`;
+
+                if (window.location.hash !== `#${this.currentSlide + 1}`) {
+                    history.replaceState(null, null, `#${this.currentSlide + 1}`);
+                }
+            }
+
+            animateElements(slide) {
+                // Progressive enhancement: subtle smooth entrance without locking opacity to 0
+                if (window.gsap) {
+                    const elements = slide.querySelectorAll('.anim-in');
+                    gsap.killTweensOf(elements);
+                    gsap.fromTo(elements, 
+                        { y: 10 }, 
+                        { 
+                            y: 0, 
+                            duration: 0.35, 
+                            stagger: 0.03, 
+                            ease: 'power2.out',
+                            clearProps: 'transform'
+                        }
+                    );
+                }
+            }
+        }
+
+        // === LIGHTBOX FUNCTIONS ===
+        function openLightbox(imageSrc, captionText) {
+            const modal = document.getElementById('lightboxModal');
+            const img = document.getElementById('lightboxImg');
+            const caption = document.getElementById('lightboxCaptionText');
+
+            img.src = imageSrc;
+            caption.textContent = captionText || 'Dokumentasi Tangkapan Layar';
+            modal.classList.add('active');
+
+            gsap.fromTo('.lightbox-content-box', 
+                { scale: 0.85, opacity: 0 }, 
+                { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.4)' }
+            );
+        }
+
+        function closeLightbox(e) {
+            if (e) e.stopPropagation();
+            const modal = document.getElementById('lightboxModal');
+            gsap.to('.lightbox-content-box', {
+                scale: 0.9, 
+                opacity: 0, 
+                duration: 0.2, 
+                ease: 'power2.in',
+                onComplete: () => {
+                    modal.classList.remove('active');
+                }
+            });
+        }
+
+        // === INTERACTIVE FRICTION MATRIX (SLIDE 5) ===
+        const frictionData = [
+            {
+                title: "Dampak: Tanpa Daftar Menu & Harga Pasti",
+                desc: "Orang Indonesia sangat sensitif terhadap harga. Tanpa kepastian menu dan harga, calon pelanggan takut kemahalan atau khawatir tidak menemukan minuman yang disukai. Akibatnya, mereka memilih kafe lain yang daftar menunya transparan di Google Maps."
+            },
+            {
+                title: "Dampak: Foto Suasana Minim & Buram",
+                desc: "Kafe bukan sekadar tempat minum, melainkan tempat nongkrong, nugas, atau meeting santai. Tanpa foto tempat duduk, colokan, dan kebersihan yang jelas, calon tamu tidak mendapatkan visualisasi kenyamanan tempat."
+            },
+            {
+                title: "Dampak: Nol Bukti Keramaian (Social Proof)",
+                desc: "Secara psikologis, manusia takut menjadi satu-satunya orang di tempat sepi. Bukti foto pelanggan lain yang sedang menikmati waktu di kafe memberikan rasa aman bahwa kafe ini layak dan disukai orang lain."
+            },
+            {
+                title: "Dampak: Jam Operasional & Kontak Hilang",
+                desc: "Tidak ada yang mau berkendara 5–10 menit hanya untuk mendapati pintu kafe terkunci rapat. Ketidakpastian jam buka adalah alasan nomor 1 calon pelanggan membatalkan niat datang."
+            }
+        ];
+
+        function selectFriction(index, cardElem) {
+            document.querySelectorAll('.interactive-friction-card').forEach(c => c.classList.remove('selected'));
+            cardElem.classList.add('selected');
+
+            const title = document.getElementById('frictionTitle');
+            const desc = document.getElementById('frictionDesc');
+            const box = document.getElementById('frictionDetailBox');
+
+            gsap.to(box, {
+                opacity: 0.4,
+                y: -4,
+                duration: 0.15,
+                onComplete: () => {
+                    title.textContent = frictionData[index].title;
+                    desc.textContent = frictionData[index].desc;
+                    gsap.to(box, { opacity: 1, y: 0, duration: 0.2, ease: 'power2.out' });
+                }
+            });
+        }
+
+        // Init on DOM Ready
+        window.addEventListener('DOMContentLoaded', () => {
+            new DeckPresentation();
+        });
+    </script>
+</body>
+</html>
