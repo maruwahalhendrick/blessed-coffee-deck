@@ -98,7 +98,7 @@
             inset: 0;
             width: 1920px;
             height: 1080px;
-            padding: 60px 90px;
+            padding: 50px 90px 85px 90px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -109,6 +109,16 @@
                         radial-gradient(circle at 5% 95%, rgba(120, 53, 15, 0.03) 0%, transparent 40%),
                         var(--bg-canvas);
             transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .slide-footer span:first-child {
+            max-width: 40%;
+            display: inline-block;
+        }
+        .slide-footer span:last-child {
+            max-width: 40%;
+            text-align: right;
+            display: inline-block;
         }
 
         .slide.active {
@@ -126,7 +136,7 @@
             border-bottom: 1px solid var(--border-light);
             padding-bottom: 14px;
             font-family: var(--font-mono);
-            font-size: 15px;
+            font-size: 16px;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--coffee-primary);
@@ -139,7 +149,7 @@
             border-top: 1px solid var(--border-light);
             padding-top: 14px;
             font-family: var(--font-mono);
-            font-size: 14px;
+            font-size: 16px;
             letter-spacing: 0.08em;
             color: var(--text-muted);
         }
@@ -147,7 +157,7 @@
         /* TYPOGRAPHY (LARGE, CRISP, LEGIBLE) */
         .kicker {
             font-family: var(--font-mono);
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             letter-spacing: 0.18em;
             text-transform: uppercase;
@@ -566,8 +576,8 @@
             }
 
             .card div, .card p, .card li {
-                font-size: 15px !important;
-                line-height: 1.55 !important;
+                font-size: 18px !important;
+                line-height: 1.6 !important;
             }
 
             .stat-num {
@@ -579,17 +589,17 @@
             }
 
             .stat-desc {
-                font-size: 14px !important;
+                font-size: 16px !important;
             }
 
             .badge {
-                font-size: 12px !important;
-                padding: 6px 14px !important;
+                font-size: 14px !important;
+                padding: 7px 16px !important;
             }
 
             .slide-header, .slide-footer {
-                font-size: 11px !important;
-                letter-spacing: 0.05em !important;
+                font-size: 13px !important;
+                letter-spacing: 0.06em !important;
                 flex-wrap: wrap !important;
                 gap: 8px !important;
             }
@@ -687,7 +697,7 @@
                             📍 KOYA BARAT &bull; KOTA JAYAPURA &bull; PAPUA
                         </div>
 
-                        <span class="desktop-hint" style="font-size: 15px; color: var(--text-muted); font-family: var(--font-mono);">
+                        <span class="desktop-hint" style="font-size: 19px; color: var(--text-muted); font-family: var(--font-mono);">
                             Gunakan tombol panah [ → ] atau Spasi untuk navigasi
                         </span>
                         <span class="mobile-hint" style="display: none; font-size: 13px; color: var(--coffee-primary); font-family: var(--font-mono); font-weight: 600;">
@@ -725,7 +735,7 @@
                             <div style="display: flex; gap: 16px; align-items: flex-start;">
                                 <div style="font-size: 28px; line-height: 1;">⚠️</div>
                                 <div>
-                                    <div style="font-weight: 700; font-size: 18px; color: var(--alert-red); margin-bottom: 6px;">Perilaku Konsumen Kopi Saat Ini</div>
+                                    <div style="font-weight: 700; font-size: 24px; color: var(--alert-red); margin-bottom: 8px;">Perilaku Konsumen Kopi Saat Ini</div>
                                     <div style="font-size: 16px; color: var(--text-body); line-height: 1.55;">
                                         Konsumen tidak lagi keliling jalan mencari kafe. Mereka membuka Google Maps, mengetik <em>"kafe terdekat"</em>, lalu memilih dari rekomendasi teratas. Jika kafe Anda tidak muncul, di mata mereka kafe tersebut <strong>dianggap tidak beroperasi</strong>.
                                     </div>
@@ -801,24 +811,24 @@
                         <div class="kicker anim-in">PERSAINGAN MAKIN AGRESIF</div>
                         <h2 class="title-slide anim-in">Kompetitor Menguasai Layar.<br>Blessed <span style="color: var(--alert-red);">Tersingkir dari Top 10</span>.</h2>
                         
-                        <p class="text-lead anim-in" style="font-size: 20px; margin-bottom: 22px;">
+                        <p class="text-lead anim-in" style="font-size: 24px; margin-bottom: 24px;">
                             Saat calon pelanggan mencari <em>"kafe di Koya Barat"</em>, layar mereka dipenuhi kafe lain seperti <strong>Katita (4.7★)</strong>, <strong>Sora (4.4★)</strong>, dan <strong>SIGMA Coffee (4.9★, 125 ulasan)</strong>.
                         </p>
 
                         <div class="card accent-amber anim-in" style="margin-bottom: 20px;">
-                            <div style="font-weight: 700; font-size: 19px; color: var(--coffee-dark); margin-bottom: 6px;">
+                            <div style="font-weight: 700; font-size: 24px; color: var(--coffee-dark); margin-bottom: 8px;">
                                 Riset Algoritma "Google Local 3-Pack"
                             </div>
-                            <div style="font-size: 16px; color: var(--text-body); line-height: 1.6;">
+                            <div style="font-size: 20px; color: var(--text-body); line-height: 1.6;">
                                 Data dari <em>Search Engine Journal</em>: <strong>70% s/d 80% dari total klik dan rute jalan</strong> hanya dinikmati oleh 3 bisnis teratas. Bisnis yang berada di bawah peringkat 10 kehilangan <strong>lebih dari 90% peluang</strong> untuk dipilih pelanggan baru.
                             </div>
                         </div>
 
                         <div class="card accent-red anim-in">
-                            <div style="font-weight: 700; font-size: 18px; color: var(--alert-red); margin-bottom: 6px;">
+                            <div style="font-weight: 700; font-size: 24px; color: var(--alert-red); margin-bottom: 8px;">
                                 Dampak Nyata bagi Coffee House Blessed
                             </div>
-                            <div style="font-size: 15px; color: var(--text-body); line-height: 1.55;">
+                            <div style="font-size: 20px; color: var(--text-body); line-height: 1.6;">
                                 Setiap hari ada orang yang ingin ngopi di dekat Anda, namun uang mereka masuk ke kasir kompetitor hanya karena kompetitor lebih terlihat di layar HP mereka.
                             </div>
                         </div>
@@ -853,8 +863,8 @@
                         <div class="card accent-red" style="margin-top: 16px; padding: 16px 22px; display: flex; align-items: center; gap: 16px;">
                             <span style="font-size: 26px;">🚨</span>
                             <div>
-                                <div style="font-weight: 700; font-size: 16px; color: var(--alert-red);">FAKTA AUDIT: CUMA 3 ULASAN</div>
-                                <div style="font-size: 15px; color: var(--text-body);">Tidak pernah bertambah satu pun ulasan selama 4 tahun terakhir!</div>
+                                <div style="font-weight: 700; font-size: 20px; color: var(--alert-red);">FAKTA AUDIT: CUMA 3 ULASAN</div>
+                                <div style="font-size: 18px; color: var(--text-body);">Tidak pernah bertambah satu pun ulasan selama 4 tahun terakhir!</div>
                             </div>
                         </div>
                     </div>
@@ -864,25 +874,25 @@
                         <div class="kicker anim-in">KRISIS KEPERCAYAAN & OTORITAS</div>
                         <h2 class="title-slide anim-in">3 Ulasan Saja.<br><span style="color: var(--alert-red);">Vakum Selama 4 Tahun.</span></h2>
                         
-                        <p class="text-lead anim-in" style="font-size: 20px; margin-bottom: 24px;">
+                        <p class="text-lead anim-in" style="font-size: 24px; margin-bottom: 26px;">
                             Rating 4.3 bintang dari 3 ulasan terdengar lumayan di awal, tapi tanggal ulasan yang sudah bertahun-tahun lalu memicu 2 dampak fatal:
                         </p>
 
                         <div style="display: flex; flex-direction: column; gap: 18px;" class="anim-in">
                             <div class="card" style="border-left: 5px solid var(--alert-red);">
-                                <div style="font-size: 18px; font-weight: 700; color: var(--alert-red); margin-bottom: 6px;">
+                                <div style="font-size: 24px; font-weight: 700; color: var(--alert-red); margin-bottom: 8px;">
                                     1. Dianggap "Mati" oleh Algoritma Google
                                 </div>
-                                <div style="font-size: 16px; color: var(--text-body); line-height: 1.6;">
+                                <div style="font-size: 20px; color: var(--text-body); line-height: 1.6;">
                                     Google memprioritaskan keamanan pengguna. Profil tanpa interaksi dan ulasan baru bertahun-tahun diindikasi sudah tutup atau tidak aktif, sehingga sengaja disingkirkan dari rekomendasi pencarian.
                                 </div>
                             </div>
 
                             <div class="card" style="border-left: 5px solid var(--coffee-primary);">
-                                <div style="font-size: 18px; font-weight: 700; color: var(--coffee-dark); margin-bottom: 6px;">
+                                <div style="font-size: 24px; font-weight: 700; color: var(--coffee-dark); margin-bottom: 8px;">
                                     2. Keraguan Psikologis Konsumen (Social Proof Hilang)
                                 </div>
-                                <div style="font-size: 16px; color: var(--text-body); line-height: 1.6;">
+                                <div style="font-size: 20px; color: var(--text-body); line-height: 1.6;">
                                     Riset <em>BrightLocal Consumer Review</em>: <strong>84% konsumen tidak mempercayai ulasan yang berumur lebih dari 3 bulan</strong>. Calon pelanggan ragu: <em>"Ini kafe masih buka gak ya? Jangan-jangan udah tutup."</em> Mereka akhirnya beralih ke kafe yang aktif.
                                 </div>
                             </div>
@@ -909,7 +919,7 @@
                 <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; margin: 16px 0;">
                     <div class="kicker anim-in">GAP INFORMASI FATAL</div>
                     <h2 class="title-slide anim-in">Profil Belum Layak: <span style="color: var(--alert-red);">Friction</span> yang Mengusir Pelanggan.</h2>
-                    <p class="text-lead anim-in" style="font-size: 21px; margin-bottom: 28px;">
+                    <p class="text-lead anim-in" style="font-size: 24px; margin-bottom: 30px;">
                         Sebelum seseorang memutuskan melangkahkan kaki ke kafe baru, mereka butuh kepastian. Klik kartu di bawah untuk melihat detail masalah:
                     </p>
 
@@ -918,26 +928,26 @@
                         
                         <div class="interactive-friction-card selected" onclick="selectFriction(0, this)">
                             <div style="font-size: 32px; margin-bottom: 12px;">📋</div>
-                            <div style="font-weight: 700; font-size: 19px; color: var(--text-heading); margin-bottom: 8px;">Tanpa Daftar Menu & Harga</div>
-                            <div style="font-size: 15px; color: var(--text-muted); line-height: 1.55;">Tidak ada foto menu jelas maupun daftar harga pasti.</div>
+                            <div style="font-weight: 700; font-size: 22px; color: var(--text-heading); margin-bottom: 8px;">Tanpa Daftar Menu & Harga</div>
+                            <div style="font-size: 18px; color: var(--text-muted); line-height: 1.55;">Tidak ada foto menu jelas maupun daftar harga pasti.</div>
                         </div>
 
                         <div class="interactive-friction-card" onclick="selectFriction(1, this)">
                             <div style="font-size: 32px; margin-bottom: 12px;">🖼️</div>
-                            <div style="font-weight: 700; font-size: 19px; color: var(--text-heading); margin-bottom: 8px;">Foto Suasana Minim</div>
-                            <div style="font-size: 15px; color: var(--text-muted); line-height: 1.55;">Hanya 4 foto generik mesin & biji kopi.</div>
+                            <div style="font-weight: 700; font-size: 22px; color: var(--text-heading); margin-bottom: 8px;">Foto Suasana Minim</div>
+                            <div style="font-size: 18px; color: var(--text-muted); line-height: 1.55;">Hanya 4 foto generik mesin & biji kopi.</div>
                         </div>
 
                         <div class="interactive-friction-card" onclick="selectFriction(2, this)">
                             <div style="font-size: 32px; margin-bottom: 12px;">👥</div>
-                            <div style="font-weight: 700; font-size: 19px; color: var(--text-heading); margin-bottom: 8px;">Nol Bukti Sosial (Crowd)</div>
-                            <div style="font-size: 15px; color: var(--text-muted); line-height: 1.55;">Tidak ada dokumentasi saat kafe dikunjungi tamu.</div>
+                            <div style="font-weight: 700; font-size: 22px; color: var(--text-heading); margin-bottom: 8px;">Nol Bukti Sosial (Crowd)</div>
+                            <div style="font-size: 18px; color: var(--text-muted); line-height: 1.55;">Tidak ada dokumentasi saat kafe dikunjungi tamu.</div>
                         </div>
 
                         <div class="interactive-friction-card" onclick="selectFriction(3, this)">
                             <div style="font-size: 32px; margin-bottom: 12px;">🕒</div>
-                            <div style="font-weight: 700; font-size: 19px; color: var(--text-heading); margin-bottom: 8px;">Jam Buka & Kontak Hilang</div>
-                            <div style="font-size: 15px; color: var(--text-muted); line-height: 1.55;">Tidak ada jam operasional pasti & nomor telepon.</div>
+                            <div style="font-weight: 700; font-size: 22px; color: var(--text-heading); margin-bottom: 8px;">Jam Buka & Kontak Hilang</div>
+                            <div style="font-size: 18px; color: var(--text-muted); line-height: 1.55;">Tidak ada jam operasional pasti & nomor telepon.</div>
                         </div>
 
                     </div>
@@ -945,20 +955,20 @@
                     <!-- Dynamic Diagnostic Details Box -->
                     <div class="card accent-amber anim-in" id="frictionDetailBox" style="margin-top: 24px; padding: 26px 32px; display: flex; justify-content: space-between; align-items: center; border-width: 2px;">
                         <div>
-                            <div id="frictionTitle" style="font-weight: 700; font-size: 20px; color: var(--coffee-dark); margin-bottom: 6px;">
+                            <div id="frictionTitle" style="font-weight: 700; font-size: 24px; color: var(--coffee-dark); margin-bottom: 8px;">
                                 Dampak: Tanpa Daftar Menu & Harga Pasti
                             </div>
-                            <div id="frictionDesc" style="font-size: 17px; color: var(--text-body); line-height: 1.6;">
+                            <div id="frictionDesc" style="font-size: 21px; color: var(--text-body); line-height: 1.6;">
                                 Orang Indonesia sangat sensitif terhadap harga. Tanpa kepastian menu dan harga, calon pelanggan takut kemahalan atau khawatir tidak menemukan minuman yang disukai. Akibatnya, mereka memilih kafe lain yang daftar menunya transparan di Google Maps.
                             </div>
                         </div>
-                        <div class="badge badge-amber" style="padding: 12px 20px; white-space: nowrap; font-size: 14px;">
+                        <div class="badge badge-amber" style="padding: 14px 22px; white-space: nowrap; font-size: 16px;">
                             HIGH FRICTION FACTOR
                         </div>
                     </div>
 
                     <!-- Stat Quote -->
-                    <div style="margin-top: 20px; font-size: 16px; color: var(--text-muted); display: flex; align-items: center; gap: 12px;" class="anim-in">
+                    <div style="margin-top: 22px; font-size: 19px; color: var(--text-muted); display: flex; align-items: center; gap: 12px;" class="anim-in">
                         <span style="font-size: 20px;">📈</span>
                         <span><strong>Data Google Business Profile:</strong> Profil dengan foto lengkap & update jam operasional mendapatkan <strong>+42% permintaan rute petunjuk arah</strong> dan <strong>+35% klik kontak telepon</strong>.</span>
                     </div>
@@ -985,34 +995,34 @@
                         <div class="kicker anim-in">BEYOND GOOGLE MAPS</div>
                         <h2 class="title-slide anim-in">Website: Mengubah Kafe Biasa Jadi <span style="color: var(--coffee-primary);">Brand Kredibel</span>.</h2>
                         
-                        <p class="text-lead anim-in" style="font-size: 20px; margin-bottom: 26px;">
+                        <p class="text-lead anim-in" style="font-size: 24px; margin-bottom: 28px;">
                             Website bukan sekadar brosur digital. Bagi bisnis kuliner modern, website adalah infrastruktur penunjang yang membuka pintu ke peluang-peluang besar:
                         </p>
 
                         <div style="display: flex; flex-direction: column; gap: 18px;" class="anim-in">
                             <div class="card">
-                                <div style="font-weight: 700; font-size: 19px; color: var(--coffee-dark); margin-bottom: 6px;">
+                                <div style="font-weight: 700; font-size: 24px; color: var(--coffee-dark); margin-bottom: 8px;">
                                     1. Akses Menu & Signature Beans 24 Jam
                                 </div>
-                                <div style="font-size: 16px; color: var(--text-muted); line-height: 1.6;">
+                                <div style="font-size: 20px; color: var(--text-muted); line-height: 1.6;">
                                     Pelanggan dapat melihat katalog lengkap minuman, makanan, racikan signature, dan ketersediaan fasilitas (WiFi, colokan listrik) langsung dari satu link praktis.
                                 </div>
                             </div>
 
                             <div class="card">
-                                <div style="font-weight: 700; font-size: 19px; color: var(--coffee-dark); margin-bottom: 6px;">
+                                <div style="font-weight: 700; font-size: 24px; color: var(--coffee-dark); margin-bottom: 8px;">
                                     2. Magnet Dukungan Kampus, Komunitas & Nirlaba
                                 </div>
-                                <div style="font-size: 16px; color: var(--text-muted); line-height: 1.6;">
+                                <div style="font-size: 20px; color: var(--text-muted); line-height: 1.6;">
                                     Organisasi kampus, komunitas lokal, atau NGO sering mencari venue untuk gathering. Profil web yang rapi memudahkan mereka menilai kelayakan venue sebelum mengajukan kerjasama.
                                 </div>
                             </div>
 
                             <div class="card">
-                                <div style="font-weight: 700; font-size: 19px; color: var(--coffee-dark); margin-bottom: 6px;">
+                                <div style="font-weight: 700; font-size: 24px; color: var(--coffee-dark); margin-bottom: 8px;">
                                     3. Kredibilitas di Mata Mitra & Supplier
                                 </div>
-                                <div style="font-size: 16px; color: var(--text-muted); line-height: 1.6;">
+                                <div style="font-size: 20px; color: var(--text-muted); line-height: 1.6;">
                                     Supplier biji kopi, susu, atau calon mitra bisnis menilai keseriusan manajemen kafe dari infrastruktur digital yang dimiliki.
                                 </div>
                             </div>
@@ -1024,14 +1034,14 @@
                         <div class="card accent-amber" style="padding: 44px; text-align: center; border-width: 2px;">
                             <div style="font-size: 56px; margin-bottom: 16px;">🌐</div>
                             <h3 style="font-family: var(--font-serif); font-size: 34px; color: var(--text-heading); margin-bottom: 14px;">Mini-Website Resmi</h3>
-                            <p style="font-size: 17px; color: var(--text-body); line-height: 1.65; margin-bottom: 28px;">
+                            <p style="font-size: 20px; color: var(--text-body); line-height: 1.65; margin-bottom: 28px;">
                                 Halaman web satu pintu yang cepat, ringan diakses di jaringan Papua, dan terhubung langsung ke tombol WhatsApp kasir serta rute Google Maps.
                             </p>
 
                             <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
-                                <div class="badge badge-amber" style="justify-content: center; padding: 14px; font-size: 14px;">✓ DOMAIN & HOSTING TERKELOLA</div>
-                                <div class="badge badge-amber" style="justify-content: center; padding: 14px; font-size: 14px;">✓ KATALOG MENU & FOTO HD</div>
-                                <div class="badge badge-amber" style="justify-content: center; padding: 14px; font-size: 14px;">✓ ONE-CLICK WHATSAPP RESERVASI</div>
+                                <div class="badge badge-amber" style="justify-content: center; padding: 14px; font-size: 18px;">✓ DOMAIN & HOSTING TERKELOLA</div>
+                                <div class="badge badge-amber" style="justify-content: center; padding: 14px; font-size: 18px;">✓ KATALOG MENU & FOTO HD</div>
+                                <div class="badge badge-amber" style="justify-content: center; padding: 14px; font-size: 18px;">✓ ONE-CLICK WHATSAPP RESERVASI</div>
                             </div>
                         </div>
                     </div>
@@ -1056,46 +1066,46 @@
                 <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; margin: 16px 0;">
                     <div class="kicker anim-in">ROADMAP PERBAIKAN TUNTAS</div>
                     <h2 class="title-slide anim-in">Rencana Aksi: Dari Tidak Terlihat Menjadi <span style="color: var(--coffee-primary);">Pilihan Utama</span>.</h2>
-                    <p class="text-lead anim-in" style="font-size: 21px; margin-bottom: 34px;">
+                    <p class="text-lead anim-in" style="font-size: 24px; margin-bottom: 34px;">
                         Kami tidak sekadar memberi saran, tapi mengeksekusi seluruh perbaikan dari hulu ke hilir:
                     </p>
 
                     <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;" class="anim-in">
                         <div class="card" style="border-top: 5px solid var(--coffee-primary);">
-                            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--coffee-primary); margin-bottom: 10px;">TAHAP 01</div>
-                            <div style="font-weight: 700; font-size: 20px; color: var(--text-heading); margin-bottom: 8px;">Setup Profil Lengkap</div>
-                            <div style="font-size: 15px; color: var(--text-muted); line-height: 1.6;">
+                            <div style="font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--coffee-primary); margin-bottom: 10px;">TAHAP 01</div>
+                            <div style="font-weight: 700; font-size: 23px; color: var(--text-heading); margin-bottom: 8px;">Setup Profil Lengkap</div>
+                            <div style="font-size: 19px; color: var(--text-muted); line-height: 1.6;">
                                 Lengkapi jam operasional resmi, kontak WhatsApp aktif, kategori spesifik, deskripsi cerita kafe, dan atribut fasilitas.
                             </div>
                         </div>
 
                         <div class="card" style="border-top: 5px solid var(--coffee-primary);">
-                            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--coffee-primary); margin-bottom: 10px;">TAHAP 02</div>
-                            <div style="font-weight: 700; font-size: 20px; color: var(--text-heading); margin-bottom: 8px;">Visual Storytelling</div>
-                            <div style="font-size: 15px; color: var(--text-muted); line-height: 1.6;">
+                            <div style="font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--coffee-primary); margin-bottom: 10px;">TAHAP 02</div>
+                            <div style="font-weight: 700; font-size: 23px; color: var(--text-heading); margin-bottom: 8px;">Visual Storytelling</div>
+                            <div style="font-size: 19px; color: var(--text-muted); line-height: 1.6;">
                                 Pemotretan aset foto menu lengkap dengan harga pasti, foto suasana tempat duduk, barista beraksi, dan suasana saat ada tamu.
                             </div>
                         </div>
 
                         <div class="card" style="border-top: 5px solid var(--coffee-primary);">
-                            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--coffee-primary); margin-bottom: 10px;">TAHAP 03</div>
-                            <div style="font-weight: 700; font-size: 20px; color: var(--text-heading); margin-bottom: 8px;">Aktivasi Ulasan Organik</div>
-                            <div style="font-size: 15px; color: var(--text-muted); line-height: 1.6;">
+                            <div style="font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--coffee-primary); margin-bottom: 10px;">TAHAP 03</div>
+                            <div style="font-weight: 700; font-size: 23px; color: var(--text-heading); margin-bottom: 8px;">Aktivasi Ulasan Organik</div>
+                            <div style="font-size: 19px; color: var(--text-muted); line-height: 1.6;">
                                 Sistem ajakan ulasan mudah di kasir (QR Code meja) agar pelanggan puas terbiasa meninggalkan rating bintang 5 secara rutin.
                             </div>
                         </div>
 
                         <div class="card" style="border-top: 5px solid var(--coffee-primary);">
-                            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--coffee-primary); margin-bottom: 10px;">TAHAP 04</div>
-                            <div style="font-weight: 700; font-size: 20px; color: var(--text-heading); margin-bottom: 8px;">Landing Page Resmi</div>
-                            <div style="font-size: 15px; color: var(--text-muted); line-height: 1.6;">
+                            <div style="font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--coffee-primary); margin-bottom: 10px;">TAHAP 04</div>
+                            <div style="font-weight: 700; font-size: 23px; color: var(--text-heading); margin-bottom: 8px;">Landing Page Resmi</div>
+                            <div style="font-size: 19px; color: var(--text-muted); line-height: 1.6;">
                                 Peluncuran mini-website profil kafe untuk memperkuat kredibilitas merek dan memudahkan kemitraan komunitas/kampus.
                             </div>
                         </div>
                     </div>
 
                     <div class="card accent-green anim-in" style="margin-top: 30px; text-align: center; padding: 20px 28px;">
-                        <span style="font-size: 18px; color: var(--success-green); font-weight: 700;">
+                        <span style="font-size: 22px; color: var(--success-green); font-weight: 700;">
                             🎯 TARGET UTAMA: Menembus Rekomendasi Top 5 Kafe di Koya Barat dan Memulihkan Aliran Pelanggan Baru!
                         </span>
                     </div>
@@ -1120,16 +1130,16 @@
                 <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; margin: 16px 0;">
                     <div class="kicker anim-in">KOLABORASI WIN-WIN MURNI</div>
                     <h2 class="title-slide anim-in">Kerjasama Ini <span style="color: var(--success-green);">100% Gratis</span> & Tanpa Risiko.</h2>
-                    <p class="text-lead anim-in" style="font-size: 20px; margin-bottom: 34px;">
+                    <p class="text-lead anim-in" style="font-size: 24px; margin-bottom: 34px;">
                         Pasti timbul pertanyaan wajar: <em>"Kenapa gratis? Apa untungnya untuk Anda?"</em> Berikut transparansi penuh komitmen kami:
                     </p>
 
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px;" class="anim-in">
                         <!-- What Cafe Gets -->
                         <div class="card accent-green" style="padding: 36px;">
-                            <div class="badge badge-green" style="margin-bottom: 16px; font-size: 13px;">KEUNTUNGAN COFFEE HOUSE BLESSED</div>
+                            <div class="badge badge-green" style="margin-bottom: 16px; font-size: 16px;">KEUNTUNGAN COFFEE HOUSE BLESSED</div>
                             <h3 style="font-family: var(--font-serif); font-size: 32px; margin-bottom: 16px; color: var(--text-heading);">Solusi Tuntas Tanpa Biaya</h3>
-                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 15px; font-size: 16px; color: var(--text-body);">
+                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px; font-size: 20px; color: var(--text-body);">
                                 <li style="display: flex; gap: 12px;"><span>✓</span> <strong>Rp 0 Biaya Setup:</strong> Seluruh perbaikan data, foto aset, dan profil ditangani langsung.</li>
                                 <li style="display: flex; gap: 12px;"><span>✓</span> <strong>Infrastruktur Siap Pakai:</strong> Mendapatkan profil Google Maps profesional dan mini-website.</li>
                                 <li style="display: flex; gap: 12px;"><span>✓</span> <strong>Tanpa Janji Palsu:</strong> Kami tidak menjanjikan omset meledak mendadak, tapi memastikan kafe Anda tidak lagi dilewati orang.</li>
@@ -1139,9 +1149,9 @@
 
                         <!-- What NeuralKats Gets -->
                         <div class="card accent-amber" style="padding: 36px;">
-                            <div class="badge badge-amber" style="margin-bottom: 16px; font-size: 13px;">KEUNTUNGAN BAGI SAYA (ABEL HENDRIK)</div>
+                            <div class="badge badge-amber" style="margin-bottom: 16px; font-size: 16px;">KEUNTUNGAN BAGI SAYA (ABEL HENDRIK)</div>
                             <h3 style="font-family: var(--font-serif); font-size: 32px; margin-bottom: 16px; color: var(--text-heading);">Studi Kasus & Portofolio Emas</h3>
-                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 15px; font-size: 16px; color: var(--text-body);">
+                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px; font-size: 20px; color: var(--text-body);">
                                 <li style="display: flex; gap: 12px;"><span>★</span> <strong>Real Case Study:</strong> Saya mendapatkan cerita nyata dan data pertumbuhan sebelum-sesudah perbaikan.</li>
                                 <li style="display: flex; gap: 12px;"><span>★</span> <strong>Bahan Marketing Utama:</strong> Hasil transformasi ini akan menjadi bukti portofolio paling berharga untuk agensi saya (NeuralKats) ke klien besar di masa depan.</li>
                                 <li style="display: flex; gap: 12px;"><span>★</span> <strong>Dukungan UMKM Lokal:</strong> Kepuasan pribadi melihat bisnis lokal di tanah Papua berkembang dan bersaing sehat.</li>
@@ -1150,7 +1160,7 @@
                     </div>
 
                     <div style="text-align: center; margin-top: 26px;" class="anim-in">
-                        <p style="font-size: 16px; color: var(--text-muted); font-style: italic;">
+                        <p style="font-size: 20px; color: var(--text-muted); font-style: italic;">
                             "Satu-satunya kerugian adalah jika kita membiarkan kondisi ini berlanjut dan membiarkan puluhan calon pembeli setiap minggu masuk ke kafe kompetitor."
                         </p>
                     </div>
@@ -1178,18 +1188,18 @@
                         Mari Ngobrol Santai 15 Menit<br>di <span style="color: var(--coffee-primary);">Coffee House Blessed</span>.
                     </h1>
                     
-                    <p class="text-lead anim-in" style="font-size: 22px; max-width: 900px; margin-bottom: 36px;">
+                    <p class="text-lead anim-in" style="font-size: 26px; max-width: 1000px; margin-bottom: 38px;">
                         Tidak perlu persiapan rumit. Cukup luangkan waktu sejenak untuk kita menyelaraskan menu, mengambil foto aset perdana, dan langsung mulai membenahi profil Maps kafe Anda.
                     </p>
 
                     <div class="card accent-amber anim-in" style="padding: 36px 54px; max-width: 700px; width: 100%; text-align: center; border-width: 2px; margin-bottom: 26px;">
-                        <div style="font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.15em; color: var(--coffee-primary); text-transform: uppercase; margin-bottom: 8px;">HUBUNGI SAYA LANGSUNG:</div>
-                        <div style="font-family: var(--font-serif); font-size: 46px; color: var(--text-heading); margin-bottom: 10px;">Abel Hendrik</div>
-                        <div style="font-family: var(--font-mono); font-size: 26px; color: var(--coffee-primary); font-weight: 700; margin-bottom: 12px;">WA: 0896-7347-4961</div>
-                        <div style="font-size: 15px; color: var(--text-muted);">Founder & Digital Strategist &bull; NeuralKats Agency</div>
+                        <div style="font-family: var(--font-mono); font-size: 16px; letter-spacing: 0.15em; color: var(--coffee-primary); text-transform: uppercase; margin-bottom: 8px;">HUBUNGI SAYA LANGSUNG:</div>
+                        <div style="font-family: var(--font-serif); font-size: 52px; color: var(--text-heading); margin-bottom: 12px;">Abel Hendrik</div>
+                        <div style="font-family: var(--font-mono); font-size: 32px; color: var(--coffee-primary); font-weight: 700; margin-bottom: 14px;">WA: 0896-7347-4961</div>
+                        <div style="font-size: 19px; color: var(--text-muted);">Founder & Digital Strategist &bull; NeuralKats Agency</div>
                     </div>
 
-                    <div class="badge badge-amber anim-in" style="font-size: 14px; padding: 12px 26px;">
+                    <div class="badge badge-amber anim-in" style="font-size: 18px; padding: 14px 28px;">
                         "Start Small. Build Smart. Bikin Bisnis Lokal Makin Ramai & Dipercaya."
                     </div>
                 </div>
